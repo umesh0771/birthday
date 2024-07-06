@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For you</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url('photo1.jpg');
+        background-size: 90%;
+    }
+    h1 {
+        margin-bottom: 50px;
+        margin-right: 100px;
+        margin-top: 150px;
+        font-size: 60px;
+        color: black;
+    }
+    #container {
+        position: relative;
+        width: 1000px;
+        height: 1000px;
+        margin: 5px;
+        overflow: hidden;
+    }
+    #target {
+        position: absolute;
+        background-color: rgb(138, 43, 226);
+        border: none;
+        width: 90px;
+        border-radius: 10px;
+        font-size: 25px;
+        padding: 8px;
+        cursor: pointer;
+        margin-left: 450px;
+        margin-top: 20px;
+        color: chartreuse;
+    }
+    #yes {
+        background-color: rgb(255, 20, 147);
+        border: none;
+        width: 90px;
+        border-radius: 10px;
+        font-size: 25px;
+        padding: 8px;
+        cursor: pointer;
+        transition: top 0.5s, left 0.5s;
+        margin-top: 20px;
+        position: absolute;
+        margin-left: 350px;
+        color: pink;
+    }
+    #thank-you {
+        position: absolute;
+        top: 120px;
+        margin-top: 130px;
+        margin-left: 250px;
+        font-size: 100px;
+        color: rgb(25, 0,25);
+        display: none;
+    }
+
+</style>
+
+</head>
+<body>
+
+<h1> Happy birthday Abhi </h1>
+<div id="container">
+    <button id="target" hidden></button>
+    <button id="yes">Open Gift</button>
+    <div id="thank-you">Surprise </div>
+</div>
+
+<script>
+    const target = document.getElementById('target');
+    const yes = document.getElementById('yes');
+    const thankYou = document.getElementById('thank-you');
+
+    yes.addEventListener('click', () => {
+        document.body.style.backgroundImage = "url('photo2.jpg')";
+        document.body.style.backgroundSize = "20%";
+        document.querySelector('h1').style.display = 'none';
+        target.style.display = 'none';
+        yes.style.display = 'none';
+        thankYou.style.display = 'block'; 
+    });
+
+    function moveTarget() {
+        const maxWidth = 400;
+        const maxHeight = 400;
+
+        const randomX = Math.floor(Math.random() * maxWidth);
+        const randomY = Math.floor(Math.random() * maxHeight);
+        target.style.left = randomX + 'px';
+        target.style.top = randomY + 'px';
+    }
+
+    target.addEventListener('mouseenter', function() {
+        moveTarget();
+    });
+</script>
+</body>
+</html>
